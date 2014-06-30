@@ -1,0 +1,14 @@
+{% import "_includes/forms" as forms %}
+
+
+
+{{ forms.textareaField({
+	first:        true,
+	label:        "Email Addresses"|t,
+	id:           'eAddress',
+	name:         'eAddress',
+	instructions: "The email addresses to send a notification to. Separate multiple addresses with a comma. (At least one email address required.)"|t,
+	value:        settings.eAddress,
+	autofocus:    true,
+	errors:       settings.getErrors('eAddress')
+}) }}

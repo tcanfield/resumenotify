@@ -1,0 +1,91 @@
+////////////////////////////////
+// Tyler Canfield
+// 6/29/2014
+// Craft Resume Notify Plugin
+////////////////////////////////
+
+
+
+/////////////////////////////////
+//** INSTALLATION AND SET UP **//
+/////////////////////////////////
+ Put the resumenotify folder in the craft\plugins folder.
+ Install and Enable the plugin in Craft Control Panel > Settings > Plugins
+ Click Resume Notify to configure the settings (which email addresses to notify).
+
+
+//////////////
+//** Form **//
+//////////////
+
+ This plugin was specifically made for use with this html form:
+ 
+ <form id="employment" method="post" action="" accept-charset="UTF-8" class="pure-form pure-form-stacked" enctype="multipart/form-data">
+
+    <input type="hidden" name="action" value="guestEntries/saveEntry">
+    <input type="hidden" name="action" value="resumeNotify/Form/getForm">
+    <input type="hidden" name="redirect" value="success">
+    <input type="hidden" name="sectionId" value="13">
+
+    <div class="pure-control-group">
+        <label for="title">Full Name</label>
+        <input id="title" type="text" name="title">
+    </div>
+
+    <div class="pure-control-group">
+        <label for="emp_phone">Phone</label>
+        <input type="text" id="emp_phone" name="fields[emp_phone]" value="" />
+    </div>
+
+    <div class="pure-control-group">
+        <label for="emp_email">Email</label>
+        <input id="emp_email" type="email" name="fields[emp_email]">
+    </div>
+
+    <div class="pure-control-group">
+        <label for="emp_website">Website (optional)</label>
+        <input id="emp_website" type="text" name="fields[emp_website]" value="" placeholder="http://" />
+    </div>
+
+    <div class="pure-control-group">
+        <label for="emp_notes">Notes</label>
+        <textarea rows="6" id="emp_notes" name="fields[emp_notes]"></textarea>
+    </div>
+
+    <br>
+
+
+    <div class="pure-control-group">
+        <label for="emp_resume">Attach Your Resume <span>(pdf/doc/docx)</span></label>
+        <input type="file" name="fields[emp_resume]" />
+    </div>
+
+    <br>
+
+    <div class="pure-control-group">
+        <input type="submit" class="pure-button pure-button-primary" value="Submit"></button>
+    </div>
+</form>
+
+ *NOTE THAT* the <input type="hidden" name="action" value="resumeNotify/Form/getForm"> line was not in the original form, and must be added for the plugin to work.
+
+
+
+/////////////////////////////
+//** HIDING EMPTY FIELDS **//
+/////////////////////////////
+
+ By default, empty fields will still be shown in the email.  For example, the email for an empty form submitted will look like this:
+ 	Full Name: 
+	Phone: 
+	Email: 
+	Website: 
+	Notes: 
+	
+ If you wish to hide these empty fields and only show fields that contain data
+ go to resumenotify\controllers\ResumeNotify_FormController.php, and on line 5 change the FALSE in define("SHOW_EMPTY_FIELDS", FALSE); to TRUE.
+ This will cause the empty fields to not be sent in the email. For example:
+ 	Full Name: Tyler Canfield
+	Notes: I like to type notes.
+	
+ without displaying the empty phone, email, and website fields.
