@@ -15,7 +15,11 @@ class ResumeNotify_FormController extends BaseController{
 	*/
 	public function actionGetForm(){
 		$this->requirePostRequest();
-		
+			
+		//Run GuestEntries Plugin to save the information
+		craft()->runController('guestEntries/saveEntry');
+	
+	
 		//Gather all form data
 		$emp_form = new ResumeNotifyModel();
 		
