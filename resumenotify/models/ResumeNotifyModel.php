@@ -17,17 +17,16 @@ class ResumeNotifyModel extends BaseModel{
 	
 		return array( 'fullname' => array(AttributeType::String, 'label' => 'title'),
 						  'phone'    => array(AttributeType::String, 'label' => 'emp_phone'),
-						  'email'	  => array(AttributeType::Email, 'label' => 'emp_email'),
-						  'website'  => array(AttributeType::String, 'label' => 'emp_website'),
+					 	  'email'	  => array(AttributeType::Email, 'label' => 'emp_email'),
+				 		  'website'  => array(AttributeType::String, 'label' => 'emp_website'),
 						  'notes'    => array(AttributeType::String, 'label' => 'emp_notes'),
 						  'fields'    => array(AttributeType::String, 'label' => 'fields'),
 						  'resume'   => AttributeType::Mixed,
-						  //body will store the above data in a string to send in the email body.
+			  			  //body will store the above data in a string to send in the email body.
 						  'body' => '', 
 						);
 	
 	}
-
 
 
 }

@@ -12,6 +12,8 @@
  Put the resumenotify folder in the craft\plugins folder.
  Install and Enable the plugin in Craft Control Panel > Settings > Plugins
  Click Resume Notify to configure the settings (which email addresses to notify).
+ 
+ This plugin uses the GuestEntries plugin to save the data before sending the email notification.  Guest Entries plugin must also be installed for this plugin to work.
 
 
 //////////////
@@ -22,7 +24,6 @@
  
  <form id="employment" method="post" action="" accept-charset="UTF-8" class="pure-form pure-form-stacked" enctype="multipart/form-data">
 
-    <input type="hidden" name="action" value="guestEntries/saveEntry">
     <input type="hidden" name="action" value="resumeNotify/Form/getForm">
     <input type="hidden" name="redirect" value="success">
     <input type="hidden" name="sectionId" value="13">

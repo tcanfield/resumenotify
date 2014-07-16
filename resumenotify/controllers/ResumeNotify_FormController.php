@@ -8,6 +8,12 @@ define("SHOW_EMPTY_FIELDS", TRUE);  //Defines whether email should display blank
 *ResumeNotify Form Controller
 */
 class ResumeNotify_FormController extends BaseController{
+	
+	/**
+	 * @var Allows anonymous access to this controller's actions.
+	 * @access protected
+	 */
+	protected $allowAnonymous = true; //stops /login redirect
 		
 	
 	/**
@@ -16,8 +22,8 @@ class ResumeNotify_FormController extends BaseController{
 	public function actionGetForm(){
 		$this->requirePostRequest();
 			
-		//Run GuestEntries Plugin to save the information
-		craft()->runController('guestEntries/saveEntry');
+		//Run GuestEntries Plugin to save the information//Moved to service.
+		//craft()->runController('guestEntries/saveEntry');
 	
 	
 		//Gather all form data
@@ -29,8 +35,19 @@ class ResumeNotify_FormController extends BaseController{
 		$emp_form->website = craft()->request->getPost('fields.emp_website');
 		$emp_form->notes = craft()->request->getPost('fields.emp_notes');
 		
-		$emp_form->resume = \CUploadedFile::getInstanceByName('fields[emp_resume]'); //??????????
 		
+$emp_form->resume = \CUploadedFile::getInstanceByName('fields[emp_resume]');
+
+//checking memory and upload limits
+//$fileSize = new \CFileValidator();
+//var_dump($fileSize->maxSize);
+//$memory_limit = ini_get('memory_limit');
+//$upload_limit = ini_get('upload_max_filesize');
+//var_dump($memory_limit);
+//var_dump($upload_limit);
+//var_dump($emp_form->resume);
+	
+	
 		//Create a string for the body of the email.  <br />\n in case it is html or not html email.
 		$body_name = "Full Name: " . $emp_form->fullname . "<br />\n";
 		$body_phone = "Phone: " . $emp_form->phone . "<br />\n";

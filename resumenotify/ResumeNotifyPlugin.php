@@ -3,6 +3,7 @@ namespace Craft;
 
 class ResumeNotifyPlugin extends BasePlugin
 {
+
     function getName()
     {
          return Craft::t('Resume Notify');
@@ -20,7 +21,7 @@ class ResumeNotifyPlugin extends BasePlugin
 
     function getDeveloperUrl()
     {
-        return '';
+        return 'https://github.com/tcanfield/';
     }
     
     protected function defineSettings(){ 
